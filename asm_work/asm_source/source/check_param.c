@@ -76,7 +76,6 @@ int		is_ind(char *str)
 {
 	int	i;
 
-	ft_putendl(str);
 	i = 0;
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;

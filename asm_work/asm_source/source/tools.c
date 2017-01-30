@@ -33,3 +33,10 @@ int		skip_blank(char *line)
 		++i;
 	return (i);
 }
+
+// remplace les series de tab et de space par UN unique tab ou UN unique space renvoie la string correspondante
+
+char	*clear_line(char *str)
+{
+	;
+}

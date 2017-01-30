@@ -121,12 +121,12 @@ int	main(int argc, char **argv)
 	// 			op_table[i].carry,
 	// 			op_table[i].dir_indir);
 	// }
-	while (glob.list)
+	/*while (glob.list)
 	{
 		// ft_putnbr(glob.list->opcode);
 		ft_putendl(glob.list->param[0]);
 		glob.list = glob.list->next;
-	}
+	}*/
 	free_op_table(glob.op_table);
 	return (0);
 }
