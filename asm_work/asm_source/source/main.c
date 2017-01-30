@@ -6,7 +6,7 @@
 /*   By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 12:48:20 by rabougue          #+#    #+#             */
-/*   Updated: 2017/01/26 15:23:34 by hboudra          ###   ########.fr       */
+/*   Updated: 2017/01/30 17:22:12 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	main(int argc, char **argv)
 	t_header	header;
 	t_glob		glob;
 	char str[2192] = {0};
+	char	**par;
+	t_info	*lst;
 
 	if (argc != 2)
 		exit(EXIT_FAILURE);
@@ -89,6 +91,24 @@ int	main(int argc, char **argv)
 	glob.list = NULL;
 	if (parse_s_file(argv[1], &header, &glob) == EXIT_FAILURE)
 		error(PARSE_S_FILE);
+
+	//==========================test_jc===============================
+	lst = glob .list;
+	while (lst)
+	{
+		par = lst->param;
+		while (par && *par)
+		{
+			ft_putstr(*par);
+			ft_putchar('$');
+			ft_putchar('\n');
+			par++;
+		}
+		ft_putendl("=================");
+		lst = lst->next;
+	}
+	//==========================test_jc===============================
+
 	//==========================Creation du .cor===============================
 	file = (char *)ft_memalloc(sizeof(char) * (ft_strlen(argv[1])) + 2); //Alloc len (name of the output.s + len .cor - ".c")
 	ft_strccat(file, argv[1], '.');

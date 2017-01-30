@@ -6,7 +6,7 @@
 /*   By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 13:36:35 by rabougue          #+#    #+#             */
-/*   Updated: 2017/01/25 17:32:25 by hboudra          ###   ########.fr       */
+/*   Updated: 2017/01/30 17:11:52 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int 				parse_info(t_glob *glob, char *line);
 */
 int					skip_blank(char *line);
 int					is_cmt(char *line);
+int     			wordnb(char *str);
 /*
 ** check_label.c
 */
@@ -121,4 +122,8 @@ void				free_op_table(t_op *op_table);
 t_info				*new_info(void);
 
 
+/*
+** clear_line.c
+*/
+char    			*clear_line(char *str);
 #endif

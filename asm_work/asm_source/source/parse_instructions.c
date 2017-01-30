@@ -6,7 +6,7 @@
 /*   By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 15:51:00 by rabougue          #+#    #+#             */
-/*   Updated: 2017/01/26 15:19:33 by hboudra          ###   ########.fr       */
+/*   Updated: 2017/01/30 16:12:13 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char	*get_instruction(char *line, bool label_exist)
 	{
 		while (line[i] != LABEL_END) // avance jusqu'au ':'
 			++i;
-			++i; // avance de 1 le curseur (actuellement sur ':')
+		++i; // avance de 1 le curseur (actuellement sur ':')
 		if (line[i] == '\0')
 			return NULL;
 		i += skip_blank(&line[i]); // ignore les caracteres espaces
@@ -136,7 +136,6 @@ void	parse_instructions(int *fd, t_glob *glob)
 		}
 		else if (ft_strchr(line, '#') || ft_strchr(line, ';'))
 			replace_line(&line);
-		//ft_putstr("a");
 		if ((label = check_if_label_exist(line)) != NULL)
 		{
 			label_exist = true;
@@ -145,8 +144,6 @@ void	parse_instructions(int *fd, t_glob *glob)
 			free(label);
 		}
 		// verifier si il y a une instruction apres le label et la parser.
-		// free(line);
-		//ft_putstr("b");
 		line = get_instruction(line, label_exist);
 		if (line)
 		{
@@ -156,6 +153,5 @@ void	parse_instructions(int *fd, t_glob *glob)
 				error(parse);
 			}
 		}
-		//ft_putstr("c");
 	}
 }

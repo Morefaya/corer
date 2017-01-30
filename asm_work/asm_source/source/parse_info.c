@@ -6,7 +6,7 @@
 /*   By: hboudra <hboudra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 16:45:54 by hboudra           #+#    #+#             */
-/*   Updated: 2017/01/26 15:35:03 by hboudra          ###   ########.fr       */
+/*   Updated: 2017/01/30 17:32:18 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int			parse_info(t_glob *glob, char *line)
 {
 	t_info	*tmp;
 	int		i;
+	int		j;
+	char	*box;
 
 	tmp = NULL;
 	if (!(tmp = new_info()))
@@ -70,6 +72,14 @@ int			parse_info(t_glob *glob, char *line)
 	i = set_opcode(tmp, line, glob->op_table);
 	push_back(&glob->list, tmp);
 	tmp->param = ft_strsplit(&line[i], ',');
+	j = 0;
+	while (tmp->param[j])
+	{
+		box = tmp->param[j];
+		tmp->param[j] = clear_line(tmp->param[j]);
+		free(box);
+		j++;
+	}
 	tmp->ocp = ocp_calc(tmp->param, tmp);
 	return (TRUE);
 }

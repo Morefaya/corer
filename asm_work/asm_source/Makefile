@@ -6,7 +6,7 @@
 #    By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 19:16:51 by rabougue          #+#    #+#              #
-#    Updated: 2017/01/25 17:34:27 by hboudra          ###   ########.fr        #
+#    Updated: 2017/01/30 16:59:36 by jcazako          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS = $(SRC)/main.c \
 	   $(SRC)/t_info.c\
 	   $(SRC)/ocp.c\
 	   $(SRC)/check_param.c\
+	   $(SRC)/clear_line.c\
 
 INCLUDE = -I ./include/ -I ./libft/includes/
 
