@@ -57,6 +57,24 @@
 # define BAD_ARGUMENT			14
 # define MALLOC					15
 
+# define LIVE 0x01
+# define LD 0x02
+# define ST 0x03
+# define ADD 0x04
+# define SUB 0x05
+# define AND 0x06
+# define OR 0x07
+# define XOR 0x08
+# define ZJUMP 0x09
+# define LDI 0x0a
+# define STI 0x0b
+# define FORK 0x0c
+# define LLD 0x0d
+# define LLDI 0x0e
+# define LFORK 0x0f
+# define AFF 0x10
+
+
 typedef struct		s_op
 {
 	char			*instruction_name;
@@ -86,9 +104,16 @@ typedef struct		s_info
 	struct s_info	*next;
 }					t_info;
 
+typedef struct	s_label
+{
+	char	*str;
+	int	n_inst;
+}		t_label;
+
 typedef struct		s_glob
 {
 	t_op 			op_table[17];
+	t_list			*label;
 	t_info			*list;
 }					t_glob;
 /*
@@ -126,4 +151,15 @@ t_info				*new_info(void);
 ** clear_line.c
 */
 char    			*clear_line(char *str);
+
+
+/*
+** write_param.c
+*/
+void			write_param(int fd, t_glob glob);
+
+/*
+** count_byte_inst.c
+*/
+int			count_byte_inst(t_info *info);
 #endif

@@ -17,8 +17,16 @@
 
 abcdefghijklmnopqrstuvwxyz_0123456789:
 
-l2:		sti r1,    %:live,     %1
-		and     r1,    %0,   r1
+l2:	sti r1, %:live, %1
+	and r1, %0, r1
 
-live:	live   %1    #hello  ;  le
-		zjmp    %:   	  live
+live:	live %1    #hello  ;  le
+	zjmp    %:live
+
+coco: sti r2, %:l2, %2
+
+marcel: and r1, %1, r1
+
+ricco:
+
+loco:
