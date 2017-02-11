@@ -22,29 +22,43 @@ void	write_dir(int fd, int i, t_info *info, t_glob glob)
 	if (opcode == ZJUMP || opcode == LDI || opcode == STI \
 		|| opcode == FORK || opcode == LLDI || opcode == LFORK)
 	{
-		//ft_putendl("A");
-		//ft_putendl(info->param[i]);
+		ft_putendl("A");
+		ft_putendl(info->param[i]);
 		if (!ft_strchr(info->param[i], (int)':'))
 		{
-			//ft_putendl("C");
+			ft_putstr("C");
 			tmp = ft_atoi(info->param[i] + 2);
+			ft_putnbr(tmp);
+			ft_putchar('\n');
 			
 		}
 		else
 		{
-			//ft_putendl("D");
+			ft_putstr("D");
 			tmp = get_label_val(info, glob, i);
+			ft_putnbr(tmp);
+			ft_putchar('\n');
 		}
 		write(fd, (char*)&tmp, T_DIR);
 	}
 	else
 	{
-		//ft_putendl("B");
-		//ft_putendl(info->param[i]);
+		ft_putendl("B");
+		ft_putendl(info->param[i]);
 		if (!ft_strchr(info->param[i], (int)':'))
+		{
+			ft_putstr("E");
 			tmp = ft_atoi(info->param[i] + 2);
+			ft_putnbr(tmp);
+			ft_putchar('\n');
+		}
 		else
+		{
+			ft_putstr("F");
 			tmp = get_label_val(info, glob, i);
+			ft_putnbr(tmp);
+			ft_putchar('\n');
+		}
 		write(fd, (char*)&tmp, T_IND);
 	}
 }
