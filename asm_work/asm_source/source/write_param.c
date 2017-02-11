@@ -1,6 +1,17 @@
 #include "common.h"
 #include "functions.h"
 
+/*static void aff_param(char **param)
+{
+	while (param && *param)
+	{
+		ft_putstr(*param++);
+		if (*param)
+			ft_putchar(' ');
+	}
+	ft_putchar('\n');
+}*/
+
 void	write_reg(int fd, int i, t_info *info)
 {
 	int	tmp;
@@ -19,45 +30,50 @@ void	write_dir(int fd, int i, t_info *info, t_glob glob)
 	char	opcode;
 	
 	opcode = info->opcode;
+	//if (g_op_tab[opcode - 1].dir_indir)
 	if (opcode == ZJUMP || opcode == LDI || opcode == STI \
 		|| opcode == FORK || opcode == LLDI || opcode == LFORK)
 	{
-		ft_putendl("A");
-		ft_putendl(info->param[i]);
+		//ft_putendl("A");
+		//ft_putendl(info->param[i]);
 		if (!ft_strchr(info->param[i], (int)':'))
 		{
-			ft_putstr("C");
-			tmp = ft_atoi(info->param[i] + 2);
-			ft_putnbr(tmp);
-			ft_putchar('\n');
+			//ft_putstr("C");
+			tmp = ft_atoi(info->param[i] + 1);
+			tmp = invert_2(tmp);
+			//ft_putnbr(tmp);
+			//ft_putchar('\n');
 			
 		}
 		else
 		{
-			ft_putstr("D");
+			//ft_putstr("D");
 			tmp = get_label_val(info, glob, i);
-			ft_putnbr(tmp);
-			ft_putchar('\n');
+			tmp = invert_2(tmp);
+			//ft_putnbr(tmp);
+			//ft_putchar('\n');
 		}
 		write(fd, (char*)&tmp, T_DIR);
 	}
 	else
 	{
-		ft_putendl("B");
-		ft_putendl(info->param[i]);
+		//ft_putendl("B");
+		//ft_putendl(info->param[i]);
 		if (!ft_strchr(info->param[i], (int)':'))
 		{
-			ft_putstr("E");
-			tmp = ft_atoi(info->param[i] + 2);
-			ft_putnbr(tmp);
-			ft_putchar('\n');
+			//ft_putstr("E");
+			tmp = ft_atoi(info->param[i] + 1);
+			tmp = invert_4(tmp);
+			//ft_putnbr(tmp);
+			//ft_putchar('\n');
 		}
 		else
 		{
-			ft_putstr("F");
+			//ft_putstr("F");
 			tmp = get_label_val(info, glob, i);
-			ft_putnbr(tmp);
-			ft_putchar('\n');
+			tmp = invert_4(tmp);
+			//ft_putnbr(tmp);
+			//ft_putchar('\n');
 		}
 		write(fd, (char*)&tmp, T_IND);
 	}
@@ -71,7 +87,8 @@ void	write_ind(int fd, int i, t_info *info, t_glob glob)
 		tmp = ft_atoi(info->param[i]);
 	else
 		tmp = get_label_val(info, glob, i);
-	write(fd, (char*)&tmp, T_IND);
+	tmp = invert_2(tmp);
+	write(fd, (char*)&tmp, T_DIR);
 }
 
 static void	w_param(int fd, t_info *info, t_glob glob)
@@ -85,7 +102,6 @@ static void	w_param(int fd, t_info *info, t_glob glob)
 	opcode = info->opcode;
 	while (param && *param)
 	{
-		//ft_putendl(*param);
 		if (is_reg(*param))
 			write_reg(fd, i, info);
 		else if (is_direct(*param))
@@ -127,6 +143,5 @@ void		write_param(int fd, t_glob glob)
 	{
 		deal_param(fd, info, glob);
 		info = info->next;
-		//ft_putendl("END");
 	}
 }

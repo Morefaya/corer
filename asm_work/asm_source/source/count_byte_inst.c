@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   count_byte_inst.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/11 16:09:04 by jcazako           #+#    #+#             */
+/*   Updated: 2017/02/11 16:21:46 by jcazako          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "common.h"
 #include "functions.h"
 
@@ -6,7 +18,7 @@ static void	help(char **param, int *byte, char opcode)
 	while (param && *param)
 	{
 		if (is_reg(*param))
-			byte++;
+			(*byte)++;
 		else if (is_direct(*param))
 		{
 			if (opcode == ZJUMP || opcode == LDI
