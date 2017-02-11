@@ -35,6 +35,7 @@ SRCS = $(SRC)/main.c \
 	   $(SRC)/clear_line.c\
 	   $(SRC)/write_param.c\
 	   $(SRC)/count_byte_inst.c\
+	   $(SRC)/get_label_val.c\
 
 INCLUDE = -I ./include/ -I ./libft/includes/
 

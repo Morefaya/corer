@@ -112,9 +112,9 @@ int	main(int argc, char **argv)
 	lt = glob.label;
 	while (lt)
 	{
-		ft_putendl(((t_label*)(lt->content))->str);
-		ft_putnbr(((t_label*)(lt->content))->n_inst);
-		ft_putchar('\n');
+		//ft_putendl(((t_label*)(lt->content))->str);
+		//ft_putnbr(((t_label*)(lt->content))->n_inst);
+		//ft_putchar('\n');
 		lt = lt->next;
 	}
 

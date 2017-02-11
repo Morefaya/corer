@@ -162,4 +162,8 @@ void			write_param(int fd, t_glob glob);
 ** count_byte_inst.c
 */
 int			count_byte_inst(t_info *info);
+/*
+** get_label_val.c
+*/
+int     get_label_val(t_info *info, t_glob glob, int i);
 #endif
