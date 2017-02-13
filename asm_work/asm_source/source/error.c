@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 19:14:34 by jcazako           #+#    #+#             */
-/*   Updated: 2017/02/13 19:23:35 by jcazako          ###   ########.fr       */
+/*   Updated: 2017/02/13 21:56:19 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	error_2(int error)
 {
 	if (error == BAD_ARGUMENT)
 		ft_fprintf(2, RED"Wrong parametres\n"END);
+	else if (error == BAD_NUMBER_PARAM)
+		ft_fprintf(2, RED"Wrong number argument in instruction\n"END);
 	else if (error == MALLOC)
 		ft_fprintf(2, RED"malloc error\n"END);
 	else
@@ -36,16 +38,16 @@ void	error(int error)
 		ft_fprintf(2, RED"Bad format\n"END);
 	else if (error == BAD_CHARACTERE)
 		ft_fprintf(2, RED"Bad caractere\n"END);
-	else if (error == BAD_LABEL_FORMAT)	
-		ft_fprintf(2, RED"Error label bad formatted.\nAllowed caractere : digit (0-9) alpha, (a-z) and underscore ('_').\n"END);
+	else if (error == BAD_LABEL_FORMAT)
+		ft_fprintf(2, RED"Error label bad formatted.\nAllowed caractere\
+		: digit (0-9) alpha, (a-z) and underscore ('_').\n"END);
 	else if (error == NAME_NOT_FOUND)
 		ft_fprintf(2, RED".name missing\n"END);
 	else if (error == COMMENT_NOT_FOUND)
 		ft_fprintf(2, RED".comment missing\n"END);
 	else if (error == INSTR_INEXIST)
 		ft_fprintf(2, RED"Instruction not valid\n"END);
-	else if (error == BAD_NUMBER_PARAM)
-		ft_fprintf(2, RED"Wrong number argument in instruction\n"END);
-	else (error_2(error));
+	else
+		error_2(error);
 	exit(EXIT_FAILURE);
 }
