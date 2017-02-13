@@ -6,7 +6,7 @@
 #    By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 19:16:51 by rabougue          #+#    #+#              #
-#    Updated: 2017/02/11 16:43:37 by jcazako          ###   ########.fr        #
+#    Updated: 2017/02/13 20:27:30 by jcazako          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRCS = $(SRC)/main.c \
 	   $(SRC)/get_label_val.c\
 	   $(SRC)/invert.c\
 	   $(SRC)/write_nb_inst.c\
+	   $(SRC)/error.c\
+	   $(SRC)/free_glob.c\
 
 INCLUDE = -I ./include/ -I ./libft/includes/
 
