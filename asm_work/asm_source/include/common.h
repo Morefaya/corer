@@ -152,7 +152,7 @@ static t_op			g_op_tab[] =
 ** parse_s_file.c
 */
 
-char				ocp_calc(char **tab);
+char				ocp_calc(t_info *info);
 int8_t				parse_s_file(char *file, t_header *header, t_glob *glob);
 
 /*
