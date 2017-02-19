@@ -6,7 +6,7 @@
 /*   By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 13:36:35 by rabougue          #+#    #+#             */
-/*   Updated: 2017/02/15 23:20:30 by jcazako          ###   ########.fr       */
+/*   Updated: 2017/02/18 19:54:06 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@
 # define BAD_NUMBER_PARAM		13
 # define BAD_ARGUMENT			14
 # define MALLOC					15
+# define BAD_FILE				16
+# define BAD_COMMENT			17
+# define BAD_NAME				18
+# define NO_INSTRUCTION			19
 
 # define LIVE					0x01
 # define LD						0x02
@@ -109,6 +113,8 @@ typedef struct		s_label
 	char			*str;
 	int				n_inst;
 }					t_label;
+
+# define l_str(x) ((t_label*)(x->content))->str
 
 typedef struct		s_glob
 {
@@ -259,5 +265,19 @@ bool				check_if_instruction_exist(char *instruction);
 void				write_reg(int fd, int i, t_info *info);
 void				write_dir(int fd, int i, t_info *info, t_glob glob);
 void				write_ind(int fd, int i, t_info *info, t_glob glob);
+
+/*
+** check.c
+*/
+
+int				check(t_glob glob);
+
+/*
+** check_1.c
+*/
+
+int				check_5(t_glob glob, t_info *info);
+int				check_6(t_info *info);
+void		check_if_comment_valid(char *str);
 
 #endif

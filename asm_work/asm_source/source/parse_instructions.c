@@ -6,7 +6,7 @@
 /*   By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 15:51:00 by rabougue          #+#    #+#             */
-/*   Updated: 2017/02/15 20:11:35 by jcazako          ###   ########.fr       */
+/*   Updated: 2017/02/18 19:21:27 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ static char	*get_instruction(char *line, bool label_exist)
 			i++;
 		if (line[i] == LABEL_END)
 			i++;
+		i += skip_blank(&line[i]);
 		if (!line[i])
 			return (NULL);
-		i += skip_blank(&line[i]);
 	}
+	if (check_if_instruction_exist(&line[i]) == false)
+		error(1);
 	return (&line[i]);
 }
 
@@ -95,11 +97,14 @@ void		parse_instructions(int *fd, t_glob *glob)
 	char	*label;
 	bool	label_exist;
 	int		i;
+	int		j;
 
 	label = NULL;
 	i = 0;
+	j = 0;
 	while (get_next_line(*fd, &line) > 0)
 	{
+	//printf("%s\n", line);
 		label_exist = false;
 		if (is_cmt(line) == true)
 		{
@@ -111,5 +116,8 @@ void		parse_instructions(int *fd, t_glob *glob)
 		parse_label(glob, line, &label_exist, i);
 		help(&line, label_exist, glob, &i);
 		free(line);
+		j = 1;
 	}
+	if (j == 0)
+		error(NO_INSTRUCTION);
 }
