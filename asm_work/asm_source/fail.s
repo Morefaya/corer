@@ -1,6 +1,0 @@
-.name "caz"
-.comment "qwe"
-
-
-
-
